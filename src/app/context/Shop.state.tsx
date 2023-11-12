@@ -1,8 +1,11 @@
-import { useReducer } from 'react'
+'use client';
+
+import { FC, useReducer } from 'react'
 import ShopContext from './Shop.context'
 import ShopReducer from './Shop.reducer'
+import { Props } from './Shop.types';
 
-const ShopContextProvider = () => {
+const ShopContextProvider: FC<Props> = ({ children }) =>  {
   const initialValues = {
   }
 
