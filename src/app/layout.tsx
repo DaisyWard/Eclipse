@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+
 import ShopContextProvider from './context/Shop.state'
+
 import Layout from './components/Layout'
-import { Component } from 'react'
+
 import '@styles/global/globals.scss'
 
 const inter = Inter({ subsets: ['latin'] })

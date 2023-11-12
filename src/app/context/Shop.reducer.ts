@@ -1,5 +1,6 @@
 import {
-  SOME_ACTION
+  FETCH_FAILURE,
+  FETCH_SUCCESS
 } from '@context/Shop.constants'
 
 const ShopReducer = (
@@ -7,10 +8,16 @@ const ShopReducer = (
   action: { type: any; payload: any }
 ) => {
   switch (action.type) {
-    case SOME_ACTION:
-      // handle the action and return a new state
-      return { ...state, someProperty: action.payload };
-    // handle other cases...
+    case FETCH_FAILURE:
+      return {
+        ...state,
+        errorMessage: action.payload.error
+      }
+    case FETCH_SUCCESS:
+      return {
+        ...state,
+        allProductData: action.payload
+      }
     default:
       return state;
   }

@@ -1,9 +1,11 @@
 export type ShopContextInterface = {
-
+  allProductData: [],
+  errorMessage: string
 }
 
 export const shopContextDefaultValues: ShopContextInterface = {
-
+  allProductData: [],
+  errorMessage: ''
 }
 
 export interface MetaProps {
