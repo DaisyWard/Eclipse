@@ -5,8 +5,8 @@ import {
   shopContextDefaultValues
 } from './Shop.types'
 
-const ShopSearchContext = createContext<ShopContextInterface>(
+const ShopContext = createContext<ShopContextInterface>(
   shopContextDefaultValues
 )
 
-export default ShopSearchContext
+export default ShopContext
