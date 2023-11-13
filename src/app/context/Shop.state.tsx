@@ -12,7 +12,7 @@ import {
 
 const ShopContextProvider: FC<Props> = ({ children }) =>  {
   const initialValues = {
-    allProductData: [],
+    allProductData: {},
     errorMessage: ''
   }
 
@@ -20,7 +20,7 @@ const ShopContextProvider: FC<Props> = ({ children }) =>  {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('https://dummyjson.com/products/1')
+      const response = await fetch('https://dummyjson.com/products?limit=10')
       const jsonData = await response.json();
       dispatch({ type: FETCH_SUCCESS, payload: jsonData })
     } catch (error) {

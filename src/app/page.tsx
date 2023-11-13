@@ -3,15 +3,20 @@
 import { useContext } from "react"
 
 import ShopContext from "./context/Shop.context"
+import Product from "./components/Product"
 
 const Home = () => {
   const { allProductData } = useContext(ShopContext)
 
-  console.log(allProductData)
+  if (typeof allProductData === 'object' && allProductData !== null) {
 
-  return (
-    <h2>Hello world</h2>
-  )
+    return (
+      allProductData.products instanceof Array &&
+      allProductData.products.map((product) => (
+        <Product key={product.id} data={product} />
+      ))
+    )
+  }
 }
 
 export default Home
