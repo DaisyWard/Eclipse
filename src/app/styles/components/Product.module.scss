@@ -1,0 +1,26 @@
+@import '../global/color.scss';
+
+.container {
+  margin-bottom: 18px;
+  border-radius: 20px;
+  border: 2px solid $color-dark-charcoal;
+  background: $color-white;
+  box-shadow: 0px 0px 20px 0px $vivid-cerise;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  margin: 26px 21px;
+}
+
+.title {
+  font-size: 26px;
+  font-weight: 700;
+  color: $color-dark-charcoal;
+}

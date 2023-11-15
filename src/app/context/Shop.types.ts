@@ -1,12 +1,24 @@
-export type ShopContextInterface = {
-  allProductData: ProductData,
-  errorMessage: string
+export interface ShopContextInterface {
+  errorMessage: string;
+  productData: ProductProps[];
 }
 
 export const shopContextDefaultValues: ShopContextInterface = {
-  allProductData: {} as ProductData,
-  errorMessage: ''
-}
+  errorMessage: '',
+  productData: [{
+    brand: '',
+    category: '',
+    description: '',
+    discountPercentage: 0,
+    id: 0,
+    images: [],
+    price: 0,
+    rating: 0,
+    stock: 0,
+    thumbnail: '',
+    title: ''
+  }]
+};
 
 export interface MetaProps {
   title: string
@@ -18,31 +30,27 @@ export interface Props {
   children: React.ReactNode
 }
 
-export interface ProductData {
+export interface ProductDataProps {
   limit: number,
-  products: any,
+  products: ProductProps,
   skip: number,
   total: number
 }
 
-export interface Product {
-  brand: string,
-  category: string,
-  description: string,
-  discountPercentage: number,
-  id: number,
-  images: ImageProps[],
-  price: number,
-  rating: number,
-  stock: number,
-  thumbnail: string,
-  title: string
+export interface ProductProps {
+  brand: string;
+  category: string;
+  description: string;
+  discountPercentage: number;
+  id: number;
+  images: string[];
+  price: number;
+  rating: number;
+  stock: number;
+  thumbnail: string;
+  title: string;
 }
 
 interface ImageProps {
   id: string
-}
-
-export interface ProductProps {
-  data: Product
 }

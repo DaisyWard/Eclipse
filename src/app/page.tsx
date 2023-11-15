@@ -6,13 +6,14 @@ import ShopContext from "./context/Shop.context"
 import Product from "./components/Product"
 
 const Home = () => {
-  const { allProductData } = useContext(ShopContext)
+  const { productData } = useContext(ShopContext)
 
-  if (typeof allProductData === 'object' && allProductData !== null) {
+  if (productData instanceof Array ) {
 
     return (
-      allProductData.products instanceof Array &&
-      allProductData.products.map((product) => (
+      productData instanceof Array &&
+      productData.length > 0 &&
+      productData .map((product) => (
         <Product key={product.id} data={product} />
       ))
     )
