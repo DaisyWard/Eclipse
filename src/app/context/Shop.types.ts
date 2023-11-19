@@ -1,6 +1,7 @@
 export interface ShopContextInterface {
-  errorMessage: string;
-  productData: ProductProps[];
+  errorMessage: string,
+  productData: ProductProps[] | null,
+  setDataIsStale: (value: boolean) => void,
 }
 
 export const shopContextDefaultValues: ShopContextInterface = {
@@ -17,7 +18,8 @@ export const shopContextDefaultValues: ShopContextInterface = {
     stock: 0,
     thumbnail: '',
     title: ''
-  }]
+  }],
+  setDataIsStale: () => null
 };
 
 export interface MetaProps {
@@ -49,6 +51,10 @@ export interface ProductProps {
   stock: number;
   thumbnail: string;
   title: string;
+}
+
+export interface ProductComponentProps {
+  data: ProductProps
 }
 
 interface ImageProps {
