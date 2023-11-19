@@ -65,9 +65,11 @@ const Product: FC<ProductComponentProps> = ({ data }): JSX.Element => {
           <Prices
             originalPrice={data.price}
             priceNow={priceNow}
+            isRecommended={data.isRecommended}
           />
           <Stock
             stock={data.stock}
+            isRecommended={data.isRecommended}
           />
 
           <button onClick={() => saveDataToConsole()}>Add to basket</button>
