@@ -61,6 +61,11 @@ export interface StockComponentProps {
   stock: number
 }
 
+export interface PriceComponentProps {
+  price: number,
+  discount: number
+}
+
 interface ImageProps {
   id: string
 }
