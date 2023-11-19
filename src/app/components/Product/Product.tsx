@@ -72,7 +72,12 @@ const Product: FC<ProductComponentProps> = ({ data }): JSX.Element => {
             isRecommended={data.isRecommended}
           />
 
-          <button onClick={() => saveDataToConsole()}>Add to basket</button>
+          <button
+            className={styles.addToBasketButton}
+            onClick={() => saveDataToConsole()}
+          >
+            Add to basket
+          </button>
         </div>
       </div>
     </div>

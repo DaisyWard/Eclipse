@@ -24,3 +24,19 @@
   font-weight: 700;
   color: $color-dark-charcoal;
 }
+
+.addToBasketButton {
+  background: linear-gradient(116.7deg, $color-vivid-cerise 9.51%, $color-amaranth-deep-purple 95.18%);
+  width: 273px;
+  height: 47px;
+  padding: 10px, 20px, 10px, 20px;
+  border-radius: 25px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 27px;
+  text-align: center;
+  color: $color-white;
+  text-transform: uppercase;
+  outline: none;
+  border: none;
+}
