@@ -6,14 +6,14 @@ import styles from '@styles/components/Product.module.scss'
 
 import { ProductComponentProps } from '@context/Shop.types'
 import ShopContext from '@/app/context/Shop.context'
+import Stock from '../Stock'
+import Prices from '../Prices'
 
 const Product: FC<ProductComponentProps> = ({ data }): JSX.Element => {
   const { setDataIsStale } = useContext(ShopContext)
 
   const [countdownHasFinished, setCountdownHasFinished] = useState(false)
   const [countdownTimestamp, setCountdownTimestamp] = useState(localStorage.getItem('timeLeft') ? Number(localStorage.getItem('timeLeft')) : Date.now() + 180000)
-
-  const discountedPrice = data.price - (data.price * (data.discountPercentage / 100))
 
   useEffect(() => {
     localStorage.setItem('timeLeft', countdownTimestamp.toString())
@@ -50,11 +50,13 @@ const Product: FC<ProductComponentProps> = ({ data }): JSX.Element => {
 
         </div>
         <div className={styles.columnThree}>
-          <p>RRP £{parseFloat(data.price.toFixed(2))}</p>
-          <p>Now £{parseFloat(discountedPrice.toFixed(2))}</p>
-          <p>Save £{parseFloat((data.price - discountedPrice).toFixed(2))}</p>
-
-          Stock: {data.stock}
+          <Prices
+            price={data.price}
+            discount={data.discountPercentage}
+          />
+          <Stock
+            stock={data.stock}
+          />
         </div>
       </div>
     </div>
