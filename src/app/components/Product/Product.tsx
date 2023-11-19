@@ -13,6 +13,8 @@ const Product: FC<ProductComponentProps> = ({ data }): JSX.Element => {
   const [countdownHasFinished, setCountdownHasFinished] = useState(false)
   const [countdownTimestamp, setCountdownTimestamp] = useState(localStorage.getItem('timeLeft') ? Number(localStorage.getItem('timeLeft')) : Date.now() + 180000)
 
+  const discountedPrice = data.price - (data.price * (data.discountPercentage / 100))
+
   useEffect(() => {
     localStorage.setItem('timeLeft', countdownTimestamp.toString())
   }, [])
@@ -48,9 +50,11 @@ const Product: FC<ProductComponentProps> = ({ data }): JSX.Element => {
 
         </div>
         <div className={styles.columnThree}>
-          {data.discountPercentage}
-          {data.price}
-          {data.stock}
+          <p>RRP £{parseFloat(data.price.toFixed(2))}</p>
+          <p>Now £{parseFloat(discountedPrice.toFixed(2))}</p>
+          <p>Save £{parseFloat((data.price - discountedPrice).toFixed(2))}</p>
+
+          Stock: {data.stock}
         </div>
       </div>
     </div>
