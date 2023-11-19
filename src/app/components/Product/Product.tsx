@@ -6,6 +6,7 @@ import styles from '@styles/components/Product.module.scss'
 
 import { ProductComponentProps } from '@context/Shop.types'
 import ShopContext from '@/app/context/Shop.context'
+import Stock from '../Stock'
 
 const Product: FC<ProductComponentProps> = ({ data }): JSX.Element => {
   const { setDataIsStale } = useContext(ShopContext)
@@ -55,6 +56,9 @@ const Product: FC<ProductComponentProps> = ({ data }): JSX.Element => {
           <p>Save £{parseFloat((data.price - discountedPrice).toFixed(2))}</p>
 
           Stock: {data.stock}
+          <Stock
+            stock={data.stock}
+          />
         </div>
       </div>
     </div>

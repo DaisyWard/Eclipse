@@ -57,6 +57,10 @@ export interface ProductComponentProps {
   data: ProductProps
 }
 
+export interface StockComponentProps {
+  stock: number
+}
+
 interface ImageProps {
   id: string
 }
