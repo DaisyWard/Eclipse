@@ -1,6 +1,9 @@
 import {
   FETCH_FAILURE,
-  FETCH_SUCCESS
+  FETCH_SUCCESS,
+  SAVE_PRODUCT_DATA,
+  UPDATE_INITIAL_LOAD,
+  UPDATE_STALE_DATA
 } from '@context/Shop.constants'
 
 const ShopReducer = (
@@ -18,6 +21,16 @@ const ShopReducer = (
         ...state,
         allProductData: action.payload
       }
+    case SAVE_PRODUCT_DATA:
+      return {
+        ...state,
+        productData: action.payload
+      }
+      case UPDATE_STALE_DATA:
+        return {
+          ...state,
+          dataIsStale: action.payload
+        }
     default:
       return state;
   }
