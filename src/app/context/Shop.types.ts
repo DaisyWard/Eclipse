@@ -63,8 +63,8 @@ export interface StockComponentProps {
 }
 
 export interface PriceComponentProps {
-  price: number,
-  discount: number
+  originalPrice: number,
+  priceNow: number
 }
 
 interface ImageProps {
