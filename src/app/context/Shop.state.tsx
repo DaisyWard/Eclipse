@@ -47,6 +47,12 @@ const ShopContextProvider: FC<Props> = ({ children }) =>  {
 
   const removeUnneededData = (products: ProductProps[]) => {
     const updatedArrayOfObjects = products.map(({ category, thumbnail, ...rest }) => rest)
+    addRecommendProductFlag(updatedArrayOfObjects)
+  }
+
+  const addRecommendProductFlag = (updatedArrayOfObjects: ProductProps[]) => {
+    if (updatedArrayOfObjects.length > 0) updatedArrayOfObjects[0].isRecommended = true
+
     localStorage.setItem('data', JSON.stringify(updatedArrayOfObjects))
     dispatch({ type: SAVE_PRODUCT_DATA, payload: updatedArrayOfObjects })
   }

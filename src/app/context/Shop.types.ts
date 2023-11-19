@@ -41,7 +41,7 @@ export interface ProductDataProps {
 
 export interface ProductProps {
   brand: string;
-  category: string;
+  category?: string;
   description: string;
   discountPercentage: number;
   id: number;
@@ -49,8 +49,9 @@ export interface ProductProps {
   price: number;
   rating: number;
   stock: number;
-  thumbnail: string;
+  thumbnail?: string;
   title: string;
+  isRecommended?: boolean
 }
 
 export interface ProductComponentProps {

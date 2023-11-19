@@ -32,6 +32,9 @@ const Product: FC<ProductComponentProps> = ({ data }): JSX.Element => {
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <div className={styles.columnOne}>
+          {data.isRecommended &&
+            <p>Recommended</p>
+          }
           <Image
             src={data.images[0]}
             alt={data.description}
