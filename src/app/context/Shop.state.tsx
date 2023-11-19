@@ -42,10 +42,13 @@ const ShopContextProvider: FC<Props> = ({ children }) =>  {
 
   const orderProductsByReview = (result: ProductProps[])=> {
     const products = result.sort((a, b) => b.rating-a.rating)
+    removeUnneededData(products)
+  }
 
-    dispatch({ type: SAVE_PRODUCT_DATA, payload: products })
-
-    localStorage.setItem('data', JSON.stringify(products))
+  const removeUnneededData = (products: ProductProps[]) => {
+    const updatedArrayOfObjects = products.map(({ category, thumbnail, ...rest }) => rest)
+    localStorage.setItem('data', JSON.stringify(updatedArrayOfObjects))
+    dispatch({ type: SAVE_PRODUCT_DATA, payload: updatedArrayOfObjects })
   }
 
   const setDataIsStale = (value: boolean) => {
@@ -55,6 +58,7 @@ const ShopContextProvider: FC<Props> = ({ children }) =>  {
 
   useEffect(() => {
     removeAppleProducts()
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.allProductData])
 
@@ -68,8 +72,6 @@ const ShopContextProvider: FC<Props> = ({ children }) =>  {
     } else {
       if (data !== null) dispatch({ type: SAVE_PRODUCT_DATA, payload: JSON.parse(data) })
     }
-
-
   }, [])
 
   const value = {
