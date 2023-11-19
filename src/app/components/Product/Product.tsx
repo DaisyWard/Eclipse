@@ -28,10 +28,22 @@ const Product: FC<ProductComponentProps> = ({ data }): JSX.Element => {
     return <p>{zeroPad(hours)}:{zeroPad(minutes)}:{zeroPad(seconds)}</p>
   }
 
+  const priceNow = data.price - (data.price * (data.discountPercentage / 100))
+
+  const saveDataToConsole = () => {
+    console.group('Basket Data')
+    console.log('Product ID', data.id)
+    console.log('Product Price', priceNow)
+    console.groupEnd()
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <div className={styles.columnOne}>
+          {data.isRecommended &&
+            <p>Recommended</p>
+          }
           <Image
             src={data.images[0]}
             alt={data.description}
@@ -51,12 +63,14 @@ const Product: FC<ProductComponentProps> = ({ data }): JSX.Element => {
         </div>
         <div className={styles.columnThree}>
           <Prices
-            price={data.price}
-            discount={data.discountPercentage}
+            originalPrice={data.price}
+            priceNow={priceNow}
           />
           <Stock
             stock={data.stock}
           />
+
+          <button onClick={() => saveDataToConsole()}>Add to basket</button>
         </div>
       </div>
     </div>
