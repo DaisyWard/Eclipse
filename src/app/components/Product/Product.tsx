@@ -2,6 +2,11 @@ import { FC, useState, useEffect, useContext } from 'react'
 import Image from 'next/image'
 import Countdown, { CountdownRenderProps, zeroPad } from 'react-countdown'
 
+import { SlBasket } from "react-icons/sl"
+
+
+import { MdOutlineStarPurple500 } from "react-icons/md";
+
 import styles from '@styles/components/Product.module.scss'
 
 import { ProductComponentProps } from '@context/Shop.types'
@@ -38,11 +43,11 @@ const Product: FC<ProductComponentProps> = ({ data }): JSX.Element => {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${data.isRecommended && styles.recommendedProduct}`}>
       <div className={styles.wrapper}>
         <div className={styles.columnOne}>
           {data.isRecommended &&
-            <p>Recommended</p>
+            <p className={styles.recommended}>Eclipse recommended</p>
           }
           <Image
             src={data.images[0]}
@@ -51,15 +56,13 @@ const Product: FC<ProductComponentProps> = ({ data }): JSX.Element => {
             width='347'
             height='287'
           />
-          <Countdown
-            date={countdownTimestamp}
-            renderer={renderer}
-          />
         </div>
         <div className={styles.columnTwo}>
           <h3 className={styles.title}>{data.title}</h3>
-          <p>{data.rating}</p>
-
+          <div className={styles.reviewWrapper}>
+            {[...Array(Math.round(data.rating))].map((e, i) => <MdOutlineStarPurple500 key={i} className={styles.starIcon} /> )}
+            <p className={styles.reviewText}>XX Reviews</p>
+          </div>
         </div>
         <div className={styles.columnThree}>
           <Prices
@@ -71,13 +74,20 @@ const Product: FC<ProductComponentProps> = ({ data }): JSX.Element => {
             stock={data.stock}
             isRecommended={data.isRecommended}
           />
+          <Countdown
+            date={countdownTimestamp}
+            renderer={renderer}
+          />
+          <div>
+            <button
+              className={styles.addToBasketButton}
+              onClick={() => saveDataToConsole()}
+            >
+              <SlBasket className={styles.basketIcon} />
 
-          <button
-            className={styles.addToBasketButton}
-            onClick={() => saveDataToConsole()}
-          >
-            Add to basket
-          </button>
+              Add to basket
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -7,10 +7,19 @@
   color: $color-dark-charcoal;
 }
 
+.savingPriceWrapper {
+  width: fit-content;
+  height: 23px;
+  padding: 3px 6px;
+  border-radius: 4px;
+  background-color: $color-vivid-cerise-transparent;
+}
+
 .savingPrice {
   font-size: 14px;
   font-weight: 400;
   line-height: 17px;
+  color: $color-vivid-cerise;
 }
 
 .rrpPrice {

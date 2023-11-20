@@ -10,7 +10,11 @@ const Prices: FC<PriceComponentProps> = ({ originalPrice, priceNow, isRecommende
     <div>
       <p className={styles.rrpPrice}>RRP £{parseFloat(originalPrice.toFixed(2))}</p>
       <p className={`${styles.priceNow} ${isRecommended && styles.recommendedProduct}`}>£{parseFloat(priceNow.toFixed(2))}</p>
-      <p className={styles.savingPrice}>Save £{parseFloat((originalPrice - priceNow).toFixed(2))}</p>
+      <div className={styles.savingPriceWrapper}>
+        <p className={styles.savingPrice}>
+          Save £{(originalPrice - priceNow).toFixed(2)}
+        </p>
+      </div>
     </div>
   )
 }

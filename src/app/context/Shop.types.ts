@@ -60,13 +60,13 @@ export interface ProductComponentProps {
 
 export interface StockComponentProps {
   stock: number,
-  isRecommended: boolean
+  isRecommended?: boolean
 }
 
 export interface PriceComponentProps {
   originalPrice: number,
   priceNow: number,
-  isRecommended: boolean
+  isRecommended?: boolean
 }
 
 interface ImageProps {
