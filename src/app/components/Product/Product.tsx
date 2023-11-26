@@ -1,6 +1,10 @@
 import { FC, useState, useEffect, useContext } from 'react'
 import Image from 'next/image'
 import Countdown, { CountdownRenderProps, zeroPad } from 'react-countdown'
+import ordinal from 'ordinal-js'
+
+import { SlBasket } from 'react-icons/sl'
+import { MdOutlineStarPurple500 } from 'react-icons/md'
 
 import styles from '@styles/components/Product.module.scss'
 
@@ -30,6 +34,11 @@ const Product: FC<ProductComponentProps> = ({ data }): JSX.Element => {
 
   const priceNow = data.price - (data.price * (data.discountPercentage / 100))
 
+  const currentDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000)
+  var day = currentDate.getDate()
+  var month = currentDate.toLocaleString('default', { month: 'long' });
+  const tomorrow = `${ordinal.toOrdinal(day)} ${month}`
+
   const saveDataToConsole = () => {
     console.group('Basket Data')
     console.log('Product ID', data.id)
@@ -38,11 +47,11 @@ const Product: FC<ProductComponentProps> = ({ data }): JSX.Element => {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${data.isRecommended && styles.recommendedProduct}`}>
       <div className={styles.wrapper}>
         <div className={styles.columnOne}>
           {data.isRecommended &&
-            <p>Recommended</p>
+            <p className={styles.recommended}>Eclipse recommended</p>
           }
           <Image
             src={data.images[0]}
@@ -51,26 +60,51 @@ const Product: FC<ProductComponentProps> = ({ data }): JSX.Element => {
             width='347'
             height='287'
           />
-          <Countdown
-            date={countdownTimestamp}
-            renderer={renderer}
-          />
         </div>
         <div className={styles.columnTwo}>
           <h3 className={styles.title}>{data.title}</h3>
-          <p>{data.rating}</p>
-
+          <div className={styles.reviewWrapper}>
+            {[...Array(Math.round(data.rating))].map((e, i) => <MdOutlineStarPurple500 key={i} className={styles.starIcon} /> )}
+            <p className={styles.reviewText}>XX Reviews</p>
+          </div>
         </div>
         <div className={styles.columnThree}>
           <Prices
             originalPrice={data.price}
             priceNow={priceNow}
+            isRecommended={data.isRecommended}
           />
           <Stock
             stock={data.stock}
+            isRecommended={data.isRecommended}
           />
+          <ul>
+            <li className={styles.orderBy}>
+              <p>Order in the next
+              <b> <Countdown
+                date={countdownTimestamp}
+                renderer={renderer}
+                className={styles.countdown}
+              /> </b>
+              for delivery on <b>{tomorrow}</b> </p>
+            </li>
+            <li>
+              FREE UK delivery
+            </li>
+            <li>
+              PayPal credit available
+            </li>
+          </ul>
 
-          <button onClick={() => saveDataToConsole()}>Add to basket</button>
+          <div>
+            <button
+              className={styles.addToBasketButton}
+              onClick={() => saveDataToConsole()}
+            >
+              <SlBasket className={styles.basketIcon} />
+              Add to basket
+            </button>
+          </div>
         </div>
       </div>
     </div>
