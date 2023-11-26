@@ -1,6 +1,6 @@
 'use client'
 
-import { FC, useReducer, useEffect, useState, useRef } from 'react'
+import { FC, useReducer, useEffect } from 'react'
 
 import ShopContext from './Shop.context'
 import ShopReducer from './Shop.reducer'
@@ -64,7 +64,6 @@ const ShopContextProvider: FC<Props> = ({ children }) =>  {
 
   useEffect(() => {
     removeAppleProducts()
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.allProductData])
 
