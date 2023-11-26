@@ -1,11 +1,10 @@
 import { FC, useState, useEffect, useContext } from 'react'
 import Image from 'next/image'
 import Countdown, { CountdownRenderProps, zeroPad } from 'react-countdown'
+import ordinal from 'ordinal-js'
 
-import { SlBasket } from "react-icons/sl"
-
-
-import { MdOutlineStarPurple500 } from "react-icons/md";
+import { SlBasket } from 'react-icons/sl'
+import { MdOutlineStarPurple500 } from 'react-icons/md'
 
 import styles from '@styles/components/Product.module.scss'
 
@@ -34,6 +33,11 @@ const Product: FC<ProductComponentProps> = ({ data }): JSX.Element => {
   }
 
   const priceNow = data.price - (data.price * (data.discountPercentage / 100))
+
+  const currentDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000)
+  var day = currentDate.getDate()
+  var month = currentDate.toLocaleString('default', { month: 'long' });
+  const tomorrow = `${ordinal.toOrdinal(day)} ${month}`
 
   const saveDataToConsole = () => {
     console.group('Basket Data')
@@ -74,17 +78,30 @@ const Product: FC<ProductComponentProps> = ({ data }): JSX.Element => {
             stock={data.stock}
             isRecommended={data.isRecommended}
           />
-          <Countdown
-            date={countdownTimestamp}
-            renderer={renderer}
-          />
+          <ul>
+            <li className={styles.orderBy}>
+              <p>Order in the next
+              <b> <Countdown
+                date={countdownTimestamp}
+                renderer={renderer}
+                className={styles.countdown}
+              /> </b>
+              for delivery on <b>{tomorrow}</b> </p>
+            </li>
+            <li>
+              FREE UK delivery
+            </li>
+            <li>
+              PayPal credit available
+            </li>
+          </ul>
+
           <div>
             <button
               className={styles.addToBasketButton}
               onClick={() => saveDataToConsole()}
             >
               <SlBasket className={styles.basketIcon} />
-
               Add to basket
             </button>
           </div>
