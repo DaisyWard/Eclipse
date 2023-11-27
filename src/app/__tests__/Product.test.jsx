@@ -45,15 +45,30 @@ const mockProductData = [
 ];
 
 describe('Product', () => {
-  it('renders the product component', () => {
+  it('renders the product title', () => {
     render(
       <ShopContext.Provider value={{ productData: mockProductData }}>
-        <Product data={mockProductData[0]} /> {/* Pass a product data to the component */}
+        <Product data={mockProductData[0]} />
       </ShopContext.Provider>
     );
 
-    const productName = screen.getByText('iPhone 9');
+    const productName = screen.getByText('iPhone 9')
 
-    expect(productName).toBeInTheDocument();
-  });
-});
+    expect(productName).toBeInTheDocument()
+  })
+
+  it('renders the product image', () => {
+    render(
+      <ShopContext.Provider value={{ productData: mockProductData }}>
+        <Product data={mockProductData[0]} />
+      </ShopContext.Provider>
+    );
+
+    const productImage = screen.getByAltText(/An apple mobile which is nothing like apple/i)
+
+    expect(productImage).toHaveAttribute(
+      'src',
+      '/_next/image?url=https%3A%2F%2Fi.dummyjson.com%2Fdata%2Fproducts%2F1%2F1.jpg&w=750&q=75'
+    )
+  })
+})
