@@ -11,7 +11,7 @@ const Home = () => {
   if (productData instanceof Array ) {
     return (
       productData instanceof Array &&
-      productData.length > 100 ?
+      productData.length > 0 ?
       productData.map((product) => (
         <Product key={product.id} data={product} />
       ))
