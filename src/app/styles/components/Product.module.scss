@@ -1,0 +1,101 @@
+@import '../global/color.scss';
+@import '../global/breakpoints.scss';
+
+.container {
+  margin-bottom: 18px;
+  border-radius: 20px;
+  border: 2px solid $color-dark-charcoal;
+  background: $color-white;
+  position: relative;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  &.recommendedProduct {
+    box-shadow: 0px 0px 20px 0px $color-vivid-cerise;
+  }
+}
+
+.wrapper {
+  display: grid;
+  justify-content: center;
+  margin: 26px 21px;
+  gap: 20px;
+
+  @media (min-width: $desktop) {
+    grid-template-columns: 1fr 2fr 1fr;
+  }
+}
+
+.title {
+  font-size: 26px;
+  font-weight: 700;
+  color: $color-dark-charcoal;
+}
+
+.addToBasketButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(116.7deg, $color-vivid-cerise 9.51%, $color-amaranth-deep-purple 95.18%);
+  width: 273px;
+  height: 47px;
+  padding: 10px, 20px, 10px, 20px;
+  border-radius: 25px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 27px;
+  text-align: center;
+  color: $color-white;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+}
+
+.starIcon {
+  color: $color-maize;
+}
+
+.reviewWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.reviewText {
+  margin-left: 10px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+}
+
+.basketIcon {
+  margin-right: 20px;
+}
+
+.recommended {
+  position: absolute;
+  top: 0px;
+  left: 30px;
+  width: fit-content;
+  height: 40px;
+  left: 30px;
+  padding: 10px;
+  border-radius: 0px 0px 5px 5px;
+  background-color: $color-black;
+  color: $color-white;
+
+  + .productImage {
+    margin-top: 30px;
+  }
+}
+
+.countdown {
+  display: inline-block;
+}
+
+.orderBy {
+  p {
+    display: inline-block;
+  }
+}

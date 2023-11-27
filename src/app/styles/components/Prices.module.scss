@@ -1,0 +1,27 @@
+@import '../global/color.scss';
+
+.priceNow {
+  font-size: 30px;
+  line-height: 35px;
+  color: $color-dark-charcoal;
+}
+
+.savingPriceWrapper {
+  width: fit-content;
+  height: 23px;
+  padding: 3px 6px;
+  border-radius: 4px;
+  background-color: $color-vivid-cerise-transparent;
+}
+
+.savingPrice {
+  color: $color-vivid-cerise;
+}
+
+.rrpPrice {
+  color: $color-argent;
+}
+
+.recommendedProduct {
+  color: $color-vivid-cerise;
+}
