@@ -17,7 +17,7 @@ const Product: FC<ProductComponentProps> = ({ data }): JSX.Element => {
   const { setDataIsStale } = useContext(ShopContext)
 
   const [countdownHasFinished, setCountdownHasFinished] = useState(false)
-  const [countdownTimestamp, setCountdownTimestamp] = useState(localStorage.getItem('timeLeft') ? Number(localStorage.getItem('timeLeft')) : Date.now() + 180000)
+  const [countdownTimestamp ] = useState(localStorage.getItem('timeLeft') ? Number(localStorage.getItem('timeLeft')) : Date.now() + 180000)
 
   useEffect(() => {
     localStorage.setItem('timeLeft', countdownTimestamp.toString())
@@ -42,7 +42,7 @@ const Product: FC<ProductComponentProps> = ({ data }): JSX.Element => {
   const saveDataToConsole = () => {
     console.group('Basket Data')
     console.log('Product ID', data.id)
-    console.log('Product Price', priceNow)
+    console.log('Product Price £', priceNow)
     console.groupEnd()
   }
 
