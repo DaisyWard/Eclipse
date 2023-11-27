@@ -15,7 +15,7 @@ import {
 const ShopContextProvider: FC<Props> = ({ children }) =>  {
   const initialValues = {
     allProductData: {},
-    errorMessage: '',
+    errorMessage: 'Sorry, something went wrong',
     productData: [],
     lastRefreshTime: null,
     dataIsStale: false,
