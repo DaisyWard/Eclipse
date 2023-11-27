@@ -9,7 +9,7 @@ import { MdOutlineStarPurple500 } from 'react-icons/md'
 import styles from '@styles/components/Product.module.scss'
 
 import { ProductComponentProps } from '@context/Shop.types'
-import ShopContext from '@/app/context/Shop.context'
+import ShopContext from '@context/Shop.context'
 import Stock from '../Stock'
 import Prices from '../Prices'
 
@@ -17,7 +17,7 @@ const Product: FC<ProductComponentProps> = ({ data }): JSX.Element => {
   const { setDataIsStale } = useContext(ShopContext)
 
   const [countdownHasFinished, setCountdownHasFinished] = useState(false)
-  const [countdownTimestamp, setCountdownTimestamp] = useState(localStorage.getItem('timeLeft') ? Number(localStorage.getItem('timeLeft')) : Date.now() + 180000)
+  const [countdownTimestamp ] = useState(localStorage.getItem('timeLeft') ? Number(localStorage.getItem('timeLeft')) : Date.now() + 180000)
 
   useEffect(() => {
     localStorage.setItem('timeLeft', countdownTimestamp.toString())
@@ -42,7 +42,7 @@ const Product: FC<ProductComponentProps> = ({ data }): JSX.Element => {
   const saveDataToConsole = () => {
     console.group('Basket Data')
     console.log('Product ID', data.id)
-    console.log('Product Price', priceNow)
+    console.log('Product Price £', priceNow)
     console.groupEnd()
   }
 
@@ -80,13 +80,13 @@ const Product: FC<ProductComponentProps> = ({ data }): JSX.Element => {
           />
           <ul>
             <li className={styles.orderBy}>
-              <p>Order in the next
+              <span>Order in the next
               <b> <Countdown
                 date={countdownTimestamp}
                 renderer={renderer}
                 className={styles.countdown}
               /> </b>
-              for delivery on <b>{tomorrow}</b> </p>
+              for delivery on <b>{tomorrow}</b> </span>
             </li>
             <li>
               FREE UK delivery
@@ -95,7 +95,6 @@ const Product: FC<ProductComponentProps> = ({ data }): JSX.Element => {
               PayPal credit available
             </li>
           </ul>
-
           <div>
             <button
               className={styles.addToBasketButton}

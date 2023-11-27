@@ -13,10 +13,10 @@ const Stock: FC<StockComponentProps> = ({ stock, isRecommended }): JSX.Element =
         {stock > lowStockThreshold ? 'In stock' : 'Last few left'}
       </p>
       {stock > lowStockThreshold ?
-        <div className={styles.inStock}></div>
+        <div className={styles.inStock} data-testid='inStockbar'></div>
       :
         <>
-          <div className={styles.lowStockbar}></div>
+          <div className={styles.lowStockbar} data-testid='lowStockbar'></div>
           <div className={styles.lowStock}></div>
         </>
       }
