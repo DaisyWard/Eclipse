@@ -23,8 +23,8 @@ export const shopContextDefaultValues: ShopContextInterface = {
 };
 
 export interface MetaProps {
-  title: string
-  keywords: string
+  title: string,
+  keywords: string,
   description: string
 }
 
@@ -67,8 +67,4 @@ export interface PriceComponentProps {
   originalPrice: number,
   priceNow: number,
   isRecommended?: boolean
-}
-
-interface ImageProps {
-  id: string
 }

@@ -9,7 +9,7 @@ import { MdOutlineStarPurple500 } from 'react-icons/md'
 import styles from '@styles/components/Product.module.scss'
 
 import { ProductComponentProps } from '@context/Shop.types'
-import ShopContext from '@/app/context/Shop.context'
+import ShopContext from '@context/Shop.context'
 import Stock from '../Stock'
 import Prices from '../Prices'
 
@@ -80,13 +80,13 @@ const Product: FC<ProductComponentProps> = ({ data }): JSX.Element => {
           />
           <ul>
             <li className={styles.orderBy}>
-              <p>Order in the next
+              <span>Order in the next
               <b> <Countdown
                 date={countdownTimestamp}
                 renderer={renderer}
                 className={styles.countdown}
               /> </b>
-              for delivery on <b>{tomorrow}</b> </p>
+              for delivery on <b>{tomorrow}</b> </span>
             </li>
             <li>
               FREE UK delivery
@@ -95,7 +95,6 @@ const Product: FC<ProductComponentProps> = ({ data }): JSX.Element => {
               PayPal credit available
             </li>
           </ul>
-
           <div>
             <button
               className={styles.addToBasketButton}
