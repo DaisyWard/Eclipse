@@ -24,6 +24,13 @@ npm run build
 yarn build
 ```
 
+Run test:
+```bash
+npm test
+# or
+yarn test
+```
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Prerequisites
@@ -32,3 +39,18 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 | ------- |:--------:|
 | npm     | 9.8.1    |
 | node    | 18.18.2  |
+
+
+# What I would do with more time
+I struggled to find time in my week to work on the test. I have tried to include bits of my different abilities whilst having to cut some of the requirements short.
+
+## Testing
+I have included some unit tests but I would add more unit tests. If I had more time I would also add Cypress to the project. It doesn't need it with the scope of the project but I wanted to showcase that I can use Cypress.
+
+I would also add tests for the dummy api and I would get my test coverage up to 100%. 
+
+## Styling
+In my time frame, I managed roughly half of the styling. It's not much but I wanted to see a little bit of responsive styling. It's not matching the Figma document but I focused on functionality over style in this test. If I had more time, I would spend time making it pixel perfect. The bits I did style I made as pixel perfect to the designs expect from the font match.
+
+## Logic
+I believe I have covered all of the specified logic
